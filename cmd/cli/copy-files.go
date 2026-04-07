@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"os"
+	"path/filepath"
 
 	"github.com/ansufw/celeritas/cmd/cli/templates"
 )
@@ -29,6 +30,11 @@ func copyFilefromTemplate(templatePath string, destinationPath string) error {
 }
 
 func copyDataToFile(data []byte, to string) error {
+	// Create directory if it doesn't exist
+	dir := filepath.Dir(to)
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return err
+	}
 	return os.WriteFile(to, data, 0644)
 }
 

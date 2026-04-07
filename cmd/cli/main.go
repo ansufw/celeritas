@@ -63,7 +63,7 @@ func main() {
 
 	case "make":
 		if arg2 == "" {
-			exitGracefully(errors.New("make requires a subcommand"))
+			exitGracefully(errors.New("make requires a subcommand: (migration | model | handler)"))
 		}
 		err = doMake(arg2, arg3)
 		if err != nil {

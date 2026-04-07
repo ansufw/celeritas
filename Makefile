@@ -1,4 +1,5 @@
 BINARY_NAME=celeritasApp
+GO_BIN=~/go/bin/
 
 # build:
 # 	@go mod vendor
@@ -43,10 +44,10 @@ cover:
 coverage:
 	@go test -cover ./...
 
-## build_cli: builds the command line tool celeritas and copies it to myapp
-build_cli:
-	@go build -o ../myapp/celeritas ./cmd/cli
 
 ## build_cli: builds the command line tool dist directory
 build:
 	@go build -o ./dist/celeritas ./cmd/cli
+
+update: build
+	@cp ./dist/celeritas ${GO_BIN}

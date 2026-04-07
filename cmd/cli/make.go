@@ -26,7 +26,7 @@ func doMake(arg2, arg3 string) error {
 			exitGracefully(errors.New("you must give migration name"))
 		}
 
-		filename := fmt.Sprintf("%d_%s.sql", time.Now().Unix(), arg3)
+		filename := fmt.Sprintf("%d_%s", time.Now().Unix(), arg3)
 
 		upFile := cel.RootPath + "/migrations/" + filename + "." + dbType + ".up.sql"
 		downFile := cel.RootPath + "/migrations/" + filename + "." + dbType + ".down.sql"
